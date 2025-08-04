@@ -1,2 +1,2 @@
 # leetcode
-leetcode Hot100
+leetcode https://leetcode.cn/discuss/post/3578981/ti-dan-hua-dong-chuang-kou-ding-chang-bu-rzz7/
