@@ -15,14 +15,14 @@ class Solution:
             return nums
         ans = []
         tmp = 0
-        for i in range(n - k):
+        for i in range(n):
             v = nums[i]
             tmp += v
             if i < k * 2 + 1:
                 continue
             ans.append(int(tmp / (k * 2 + 1)))
             # 移除窗口
-            tmp -= nums[i - k * 2 - 1]
+            tmp -= nums[i - k * 2]
         return [-1] * k + ans + [-1] * k
 
 
