@@ -6,7 +6,7 @@ class Solution:
         isVisited[i] = True
         ## 继续对节点i相邻的点进行访问
         for j in range(len(isConnected)):
-            if isConnected[i][j] == 1 and isVisited[j] == False:
+            if isConnected[i][j] == 1 and not isVisited[j]:
                 self.dfs(isConnected, isVisited, j)
 
     def findCircleNum(self, isConnected: List[List[int]]) -> int:
