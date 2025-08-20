@@ -28,4 +28,4 @@ class Solution:
         for nextNode in graph[node]:
             if not isVisited[nextNode]:
                 size += self.DFS(graph, isVisited, nextNode)
-                return size
+        return size
