@@ -32,10 +32,11 @@ class Solution:
         ###统计可以用来连接别的连通块的线，n个节点至少需要n-1条线就可以连接起来，其余的都是多的，可以拆开
         redundancy = sum(res) - len(res)
         ##也就是说我需要redundancy 这个数量的线就可以将连通块的内部连接起来
-        ##那么连接m个两桶块至少需要m-1根线
+        ##那么连接m个连通块至少需要m-1根线
         ##也就是说我实际的线的数量 减去redundancy 能否覆盖掉 m-1,如果可以，那就能连起来，否则就不行
         if len(connections) - redundancy < len(res) - 1:
             return -1
+        ##可以覆盖掉，那么只需要将不同的连通块连接起来就好了
         return len(res) - 1
 
 
