@@ -4,7 +4,7 @@ import heapq
 
 class Graph:
     def __init__(self, n: int, edges: List[List[int]]):
-        self.g = [[inf] * n for _ in range(n)]  # 邻接矩阵
+        self.g = [[float('inf')] * n for _ in range(n)]  # 邻接矩阵
         for x, y, w in edges:
             self.g[x][y] = w  # 添加一条边（题目保证没有重边）
 
@@ -13,7 +13,7 @@ class Graph:
 
     def shortestPath(self, start: int, end: int) -> int:
         n = len(self.g)
-        dis = [inf] * n  # 从 start 出发，到各个点的最短路，如果不存在则为无穷大
+        dis = [float('inf')] * n  # 从 start 出发，到各个点的最短路，如果不存在则为无穷大
         dis[start] = 0
         vis = [False] * n
         while True:  # 至多循环 n 次
@@ -21,7 +21,7 @@ class Graph:
             for i, (b, d) in enumerate(zip(vis, dis)):
                 if not b and (x < 0 or d < dis[x]):
                     x = i
-            if x < 0 or dis[x] == inf:  # 所有从 start 能到达的点都被更新了
+            if x < 0 or dis[x] == float('inf'):  # 所有从 start 能到达的点都被更新了
                 return -1  # 无法到达终点
             if x == end:  # 找到终点，提前退出
                 return dis[x]
