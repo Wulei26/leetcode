@@ -33,7 +33,12 @@ class Solution:
                     not visited[edge[0]] and cur_dist + edge[1] < dis[edge[0]]
                 ):  ###什么时候更新值
                     ## cur_dist + edge[1] 就是cur_node 连接的节点到源点的距离 start -> x ->y
-                    ### dis[edge[0]] 就是 这个点不经过cur_node 直接连接到源点
+                    ### 为什么这里不需要min（cur_dist + edge[1]， dis[edge[0]]）了
+                    ### 因为dis[edge[0]]初始化是MAX，而cur + edge[1] 一定是一个数，所以如果这个节点未被访问过，那么就一定会被更新
+                    ## 所以这里是将cur_node连接的所有点进行加入，而且利用堆排序，最上面的就是距离最近的点
+                    ## 为什么这里不需要显式的比较 min(start -> x ->y,start->y)。就拿 1，2， 3举例子，1->2->3 的距离小于1->3的距离
+                    ## 在初始的时候，也就是cur_node为start的时候，就会更新dis[3]的距离为4，然后我们再做判断 cur_dist + edge[1] < dis[edge[0]] 如果这个
+                    ## 条件为真，那么就说明找到了比直接与源点相连 更短的路径，这个时候我们再更新dis[3]，这就是为什么我们不需要再用min比较了
                     dis[edge[0]] = cur_dist + edge[1]
                     heapq.heappush(
                         pq, (dis[edge[0]], edge[0])
